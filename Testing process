@@ -1,0 +1,100 @@
+- Prerequrement knowledge:
+  Complier Flags:
+  C++:
+  GCC: g++ -pipe -O2 -std=c++14 <FileName> -lm #compile files
+       ls #list all the files in the folder and check the compiled file's name
+       ./a.out #run the compiled file
+  Python:
+  Python3 name.py
+  
+- Coding Test:
+  1. Automated Test
+  Coded a script which can make the test process run automatically
+  C++ Example:
+  #include <cstdlib> // a library which can offer us the random number generation function
+  #include <iostream>
+  using namespace std;
+  
+  //Function one
+  long long MaxPairwiseProduct(const vector<int>& numbers){
+    long long result = 0;
+    int n = numbers.size();
+    for(int i = 0; i < n; ++i){
+      for(int j = i + 1; j < n; j++){
+        if(((long long)numbers[i])) * numbers[j];
+          result = ((long long)(numbers[i] * numbers[j];
+         }
+        }
+       }
+       return result;
+     }
+    //Function two:
+    long long MaxPairwiseProductFast(const vector<int>& numbers){
+      int n = numbers.size();
+      
+      int max_index1 = -1;
+      for(int i = 0; i < n; ++i){
+       if((max_index1 == -1) || (numbers[i] > numbers[max_index1]))
+        max_index1 = i;
+        
+      int max_index2 = -1;
+      for(int j = 0; j < n; ++j)
+        if((numbers[j] != numbers[max_index1]) && ((max_index2 == -1) || (numbers[j] > numbers[max_index2])))
+          max_index2 = j;
+      return ((long long)(numbers[max_index1])) * numbers[max_index2];
+     }
+  // Testing program automatically
+  int main(){
+    while(True){
+      int n = rand() % 10 + 2;
+      cout << n << "\n";
+      vector<int> a;
+      for (int i = 0; i < n; ++i){
+        a.push_back(rand() % 10000);
+      }
+      for (int i = 0; i < n; ++i){
+        cout << a[i] << " ";
+      }
+      cout << "\n";
+      long long res1 = MaxPairwiseProduct(a);
+      long long res2 = MaxPairwiseProductFast(a);
+      if (res1 != res2 ){
+        cout << "Wrong answer: " << res1 << ' ' << res << "\n";
+        break;
+      }
+      else{
+        cout << "OK\n";
+        }
+      }
+      
+      Python Example:
+      import random
+      import sys
+      import os
+      # accept the number of tests as a command line parameter
+      tests = int (sys . argv[ 1 ])
+      # accept the parameter for the tests as a command line parameter
+      n = int ( sys.argv [2])
+      for i in range (tests):
+      print(”Test#” + str(i))
+      # run the generator gen.py with parameter n and the seed i
+      os.system(”python3 gen.py ” + str(n) + ” ” + str(i) + ” > input.txt” )
+      # run the model solution model.py
+      # Notice that it is not necessary that solution is implemented in
+      # python , you can as well run ./model <input.txt >model.txt for a C++
+      # solution.
+      os.system(”python3 model.py <input.txt >model.txt”)
+      # run the main solution
+      os.system(”python3 main.py <input.txt >main.txt” )
+      # read the output of the model solution:
+      with open ( ’model.txt’) as f:
+           model = f.read( )
+      print( ”Model: ” ,model)
+      # read the output of the main solution:
+      with open (’main.txt’ ) as f : 
+          main = f.read()
+      print(”Main: ” , main)
+      if model != main :
+        break
+  2. Stress Test
+  3. Coner case
