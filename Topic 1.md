@@ -382,12 +382,17 @@ Explanation: The longest substring without any repeating characters is "abc".
 ```
  - Example 2:
 ```sh
-Input: Fruit=['A', 'B', 'C', 'B', 'B', 'C']
-Output: 5
-Explanation: We can put 3 'B' in one basket and two 'C' in the other basket. 
-This can be done if we start with the second letter: ['B', 'C', 'B', 'B', 'C']
+Input: String="abbbb"
+Output: 2
+Explanation: The longest substring without any repeating characters is "ab".
 ```
-This problem follows the Sliding Window pattern and is quite similar to Longest Substring with K Distinct Characters. In this problem, we need to find the length of the longest subarray with no more than two distinct characters (or fruit types!). This transforms the current problem into Longest Substring with K Distinct Characters where K=2.
+ - Example 3:
+```sh
+Input: String="abccde"
+Output: 3
+Explanation: Longest substrings without any repeating characters are "abc" & "cde".
+```
+This problem follows the Sliding Window pattern and we can use a similar dynamic sliding window strategy as discussed in Longest Substring with K Distinct Characters. We can use a HashMap to remember the last index of each character we have processed. Whenever we get a repeating character we will shrink our sliding window to ensure that we always have distinct characters in the sliding window.
 
 ### Solution:
  - C++ Solution:
