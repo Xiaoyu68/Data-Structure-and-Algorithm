@@ -226,3 +226,65 @@ search(T, key)
 - Time Complexity
     O(1)
 
+# 递归和分治法
+
+利用递归的技巧，可以将一个问题拆分成两个或者更多较小的局部问题，利用递归函数求出每个局部问题的解，然后再将结构整合，最终解决原问题。这种编程手法成为分治法。
+
+```
+factorial(n)
+    if n == 1
+        return 1
+    return n * factorial(n - 1)
+```
+
+分治法：
+- 将问题“分割”成局部问题
+- 递归得求解局部问题
+- 将局部问题的解“整合”，解决原问题
+
+求最大值的算法
+
+```
+findMaximum(A, l, r)
+    m = (1 + r)/2
+    if l == r - 1
+        return A[l]
+    else
+        u = findMaximum(A, l, m)
+        v = findMaximum(A, m, r)
+        x = max(u, v)
+    return x
+```
+## 穷举搜索
+
+列举组合的递归函数
+
+```
+makeCombination()
+    for i = 0 to n - 1
+        S[i] = 0
+    rec(0)
+
+rec(i)
+    if i 到达 n
+        print S
+        return 
+    
+    rec(i + 1)
+    S[i] = 1
+    rec(i + 1)
+    S[i] = 0
+    
+```
+判断能否得出某个整数的递归函数
+
+```
+solve(i, m)
+    if m == 0
+        return true
+    if i >= n
+        return false
+    res = solve(i + 1, m) || solve(i + 1, m - A[i])
+    return res
+```
+
